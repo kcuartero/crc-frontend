@@ -1,0 +1,37 @@
+name: Frontend CI/CD
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'crc-frontend/**'
+
+jobs:
+  job_id:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    name: Deploy Cloud Resume
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - id: 'auth'
+    name: 'Authenticate to Google Cloud'
+    uses: 'google-github-actions/auth@v1'
+    with:
+      workload_identity_provider: 'projects/457324236736/locations/global/workloadIdentityPools/gha-pool/providers/gha-provider'
+      service_account: 'gha-service@kcuartero-crc-tf.iam.gserviceaccount.com'
+
+    - id: 'upload-file'
+      uses: 'google-github-actions/upload-cloud-storage@v1'
+      with:
+        path: 'crc-frontend'
+        destination: 'kcuartero_resume/'
+        parent: false
+
+    - name: 'gcloud sdk' #setup gcloud sdk in GHA env in order to run gcloud commands
+      uses: 'google-github-actions/setup-gcloud@v1'
+
+    - name: 'invalidate cdn cache'
+      run: 'gcloud compute url-maps invalidate-cdn-cache kcuartero_resume --path "/"'
