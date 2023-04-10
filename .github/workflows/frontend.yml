@@ -24,7 +24,7 @@ jobs:
     - id: 'upload-file'
       uses: 'google-github-actions/upload-cloud-storage@v1'
       with:
-       path: 'crc-frontend/index.html'
+       path: 'crc-frontend'
        destination: 'kcuartero_resume/'
        parent: false
 
