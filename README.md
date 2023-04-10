@@ -1,1 +1,1 @@
-# crc-frontend
+# Cloud Resume Challenge - GCP Edition (Frontend)
