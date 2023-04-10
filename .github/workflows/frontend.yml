@@ -1,9 +1,8 @@
 name: Frontend CI/CD
 on:
   push:
-    branches: [ main ]
-    paths:
-    - 'crc-frontend/**'
+    branches:
+      - main
 
 jobs:
   deploy_site:
