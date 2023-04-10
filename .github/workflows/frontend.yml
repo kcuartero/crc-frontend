@@ -1,9 +1,9 @@
 name: Frontend CI/CD
-on:
-  push:
-    branches: [ main ]
-    paths:
-    - 'crc-frontend/**'
+on: [workflow_dispatch]
+  #push:
+   # branches: [ main ]
+   # paths:
+   # - 'crc-frontend/**'
 
 jobs:
   deploy_site:
