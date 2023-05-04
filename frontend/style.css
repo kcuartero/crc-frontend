@@ -103,6 +103,16 @@ h1
 	text-align:center;
 }
 
+.name-hero a:link
+{
+	color:black;
+}
+
+.name-hero a:visited
+{
+	color:black;
+}
+
 .name-hero .name-text
 {
 	margin:0 auto;
