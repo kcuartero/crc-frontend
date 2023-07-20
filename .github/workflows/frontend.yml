@@ -27,7 +27,7 @@ jobs:
       uses: 'google-github-actions/upload-cloud-storage@v1'
       with:
        path: 'frontend'
-       destination: 'kcuartero_resume/'
+       destination: 'kcuartero_resume2/'
        parent: false
 
     - name: 'gcloud sdk' #setup gcloud sdk in GHA env in order to run gcloud commands
